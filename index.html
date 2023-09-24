@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js calculate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background: #031321;
+        }
+        
+        .container {
+            padding: 20px;
+            border-radius: 10px;
+            background: #fa3b19;
+        }
+        
+        .container form input {
+            height: 50px;
+            width: 50px;
+            padding: 20px;
+            background: transparent;
+            box-shadow: -4px -4px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            outline: 0;
+            border: 0;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .container form input.equal {
+            width: 122px;
+        }
+        
+        form .display {
+            justify-content: flex-end;
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        form .display input {
+            flex: 1;
+            background: transparent;
+            text-align: right;
+            font-size: 40px;
+            color: black;
+            box-shadow: none;
+        }
+        
+        @media screen and (max-width: 1024px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+                background: #088b03;
+            }
+            .container {
+                padding: 8px;
+                border-radius: 10px;
+                background: #800303;
+                margin: 0px;
+            }
+            .container form input {
+                height: 45px;
+                width: 45px;
+                padding: 12px;
+                background: transparent;
+                box-shadow: -4px -4px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+                margin: 12px;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                text-align: center;
+                border-radius: 10px;
+                color: white;
+            }
+            .container form input.equal {
+                width: 115px;
+            }
+            form .display {
+                justify-content: flex-end;
+                display: flex;
+                background: white;
+                border-radius: 10px;
+                margin: 10px 0;
+            }
+            form .display input {
+                flex: 1;
+                background: transparent;
+                text-align: right;
+                font-size: 40px;
+                color: black;
+                box-shadow: none;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+                background: #8b0303;
+            }
+            .container {
+                padding: 10px;
+                border-radius: 10px;
+                background: #088048;
+            }
+            .container form input {
+                height: 40px;
+                width: 40px;
+                padding: 10px;
+                background: transparent;
+                box-shadow: -4px -4px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+                margin: 8px;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                text-align: center;
+                border-radius: 10px;
+                color: white;
+            }
+            .container form input.equal {
+                width: 100px;
+            }
+            form .display {
+                justify-content: flex-end;
+                display: flex;
+                background: white;
+                border-radius: 10px;
+                margin: 20px 0;
+            }
+            form .display input {
+                flex: 1;
+                background: transparent;
+                text-align: right;
+                font-size: 40px;
+                color: black;
+                box-shadow: none;
+            }
+        }
+        
+        @media screen and (max-width: 425px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+                background: #e7441c;
+            }
+            .container {
+                padding: 30px;
+                border-radius: 10px;
+                background: #08316d;
+            }
+            .container form input {
+                height: 30px;
+                width: 30px;
+                padding: 10px;
+                background: transparent;
+                box-shadow: -4px -4px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+                margin: 8px;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                text-align: center;
+                border-radius: 10px;
+                color: white;
+            }
+            .container form input.equal {
+                width: 80px;
+            }
+            form .display {
+                justify-content: flex-end;
+                display: flex;
+                background: white;
+                border-radius: 10px;
+                margin: 10px 0;
+            }
+            form .display input {
+                flex: 1;
+                background: transparent;
+                text-align: right;
+                font-size: 20px;
+                color: black;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculate">
+            <form>
+                <div class="display">
+                    <input type="text" name="display">
+                </div>
+                <div>
+                    <input type="button" value="AC" onclick="display.value =' '">
+                    <input type="button" value="DE" onclick="display.value =display.value.toString().slice(0,-1)">
+                    <input type="button" value="." onclick="display.value +='.'">
+                    <input type="button" value="/" onclick="display.value +='/'">
+                </div>
+                <div>
+                    <input type="button" value="7" onclick="display.value +='7'">
+                    <input type="button" value="8" onclick="display.value +='8'">
+                    <input type="button" value="9" onclick="display.value +='9'">
+                    <input type="button" value="*" onclick="display.value +='*'">
+                </div>
+                <div>
+                    <input type="button" value="4" onclick="display.value +='4'">
+                    <input type="button" value="5" onclick="display.value +='5'">
+                    <input type="button" value="6" onclick="display.value +='6'">
+                    <input type="button" value="-" onclick="display.value +='-'">
+                </div>
+                <div>
+                    <input type="button" value="1" onclick="display.value +='1'">
+                    <input type="button" value="2" onclick="display.value +='2'">
+                    <input type="button" value="3" onclick="display.value +='3'">
+                    <input type="button" value="+" onclick="display.value +='+'">
+                </div>
+                <div>
+                    <input type="button" value="00" onclick="display.value +='00'">
+                    <input type="button" value="0" onclick="display.value +='0'">
+                    <input type="button" value="=" onclick="display.value =eval(display.value)" class="equal">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
